@@ -21,6 +21,7 @@ class linklist
     void findTotalElements();
     int count();
     void display();
+    int sum()
     ~linklist();
 };
 
@@ -56,19 +57,48 @@ void linklist::append(int num)
 }
 
 //Get an item from a given index position 
-int linklist::GetAtIndex(int pos)
+int linklist::GetAtIndex(int value)
 {
-    node *q,*t;int i=1;
 
-    for(q=p;q->link!=NULL;q=q->link)
+    node *q,*t;int pos=1;
+
+    for(q=first;q->next!=NULL;q=q->next)
     {
-        if(i==pos)
+        if(q->value==value)
         {
-            return q->data;
+           break;
         }
-        i++;
+        pos++;
+    }
+    if(pos==1){
+        return -1;
+    }
+    else{
+    return pos++;
     }
 }
+
+
+//get sum of all items
+int linklist::sum()
+{
+    int sum=0;
+    node *q;
+
+    for(q=first;q->next!=NULL;q=q->next)
+    {
+        sum+=q->value;
+    }
+    return sum;
+}
+
+//Find evens
+int linklist::findEvens()
+{
+
+}
+
+
 
 //Set an item from a given index position 
 void linklist::SetAtIndex(int pos,int newdata)
